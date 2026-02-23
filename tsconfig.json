@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": false,
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "noImplicitReturns": false,
+    "types": [],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    ".eslintrc.js",
+    "rsbuild.config.ts"
+  ]
+}
