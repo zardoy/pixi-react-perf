@@ -9,6 +9,7 @@ export default defineConfig({
     polyfill: 'usage',
     minify: {
     },
+    assetPrefix: './',
   },
   source: {
     entry: {
