@@ -18,7 +18,7 @@ const valtioStore = proxy({
 })
 
 function PixiRectValtio({ num, children }: { num: number, children: React.ReactNode }) {
-  const item = useSnapshot(valtioStore).items[num]
+  const item = useSnapshot(valtioStore.items[num])
 
   return (
     <pixiContainer x={item.x} y={item.y}>
