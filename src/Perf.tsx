@@ -8,7 +8,7 @@ const COUNT = 100
 
 extend({ Container, Graphics: PixiGraphics })
 
-type ActiveTest = 1 | 2 | 3 | 4 | null
+type ActiveTest = 1 | 2 | 3 | 4 | 5 | null
 
 const valtioStore = proxy({
   items: Array.from({ length: COUNT }, (_, i) => ({
@@ -22,6 +22,14 @@ function PixiRectValtio({ num, children }: { num: number, children: React.ReactN
 
   return (
     <pixiContainer x={item.x} y={item.y}>
+      {children}
+    </pixiContainer>
+  )
+}
+
+function PixiRectValtioProps({ x, y, children }: { x: number; y: number; children: React.ReactNode }) {
+  return (
+    <pixiContainer x={x} y={y}>
       {children}
     </pixiContainer>
   )
@@ -56,6 +64,25 @@ function Test4PixiValtio() {
           <Graphics>
           </Graphics>
         </PixiRectValtio>
+      ))}
+    </pixiContainer>
+  )
+}
+
+function Test5PixiValtioSingleSnapshot() {
+  useExtend({ Graphics: PixiGraphics })
+  const { items } = useSnapshot(valtioStore)
+  useTick(() => {
+    valtioStore.items.forEach((item) => {
+      item.x = (item.x + 2) % 800
+    })
+  })
+  return (
+    <pixiContainer>
+      {items.map((item, i) => (
+        <PixiRectValtioProps key={i} x={item.x} y={item.y}>
+          <Graphics />
+        </PixiRectValtioProps>
       ))}
     </pixiContainer>
   )
@@ -159,6 +186,7 @@ export const Perf: React.FC = () => {
         <button onClick={() => setActive(2)}>Test 2: Pixi ticker + refs</button>
         <button onClick={() => setActive(3)}>Test 3: DOM divs + useState</button>
         <button onClick={() => setActive(4)}>Test 4: Pixi + Valtio (100 encapsulated)</button>
+        <button onClick={() => setActive(5)}>Test 5: Pixi + Valtio (single useSnapshot, props)</button>
         <button onClick={() => setActive(null)}>Stop</button>
       </div>
       <div style={{ width: 800, height: 600, border: '1px solid #333' }}>
@@ -176,6 +204,11 @@ export const Perf: React.FC = () => {
         {active === 4 && (
           <Application background="#1a1a2e" width={800} height={600}>
             <Test4PixiValtio />
+          </Application>
+        )}
+        {active === 5 && (
+          <Application background="#1a1a2e" width={800} height={600}>
+            <Test5PixiValtioSingleSnapshot />
           </Application>
         )}
       </div>

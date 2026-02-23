@@ -10,6 +10,7 @@ export default defineConfig({
     minify: {
     },
     assetPrefix: './',
+    sourceMap: true,
   },
   source: {
     entry: {
