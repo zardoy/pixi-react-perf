@@ -9,8 +9,6 @@ export const App: React.FC = () => {
   return (
     <div>
       <Perf />
-      {/* <PixiStage /> */}
-      {/* <ParticleEffects /> */}
     </div>
   )
 }

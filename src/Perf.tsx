@@ -17,9 +17,10 @@ function Test1PixiRects() {
     g.fill({ color: 0xff0000 })
   }, [])
 
-  useTick(() => {
+  const update = useCallback(() => {
     setXs((prev) => prev.map((x) => (x + 2) % 800))
-  })
+  }, [])
+  useTick(update)
 
   return (
     <pixiContainer>
