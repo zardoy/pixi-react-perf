@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpixi_react_perf=self.webpackChunkpixi_react_perf||[]).push([["499"],{84654(e,a,p){p.r(a),p(58377),p(16101),p(35226)},35226(e,a,p){var r=p(22015),c=p(80762),i=p(75901);r.XO.add(i.u),r.XO.add(c.L)}}]);
+//# sourceMappingURL=499.6ee972d8.js.map
